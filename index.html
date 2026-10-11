@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <section class="form-card">
+            <header class="form-header">
+                <div class="school-mark" aria-hidden="true">SR</div>
+                <p class="eyebrow">STUDENT SERVICES</p>
+                <h1>Student Registration</h1>
+                <p class="subtitle">Complete the form below to register your student information.</p>
+            </header>
+
+            <div id="successMessage" class="success-message" role="status" aria-live="polite" hidden></div>
+
+            <form id="registrationForm" novalidate>
+                <h2 class="section-title">Personal Information</h2>
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="studentId">Student ID <span>*</span></label>
+                        <input type="text" id="studentId" name="studentId" placeholder="e.g. 2026-00123"
+                               data-label="Student ID" data-required="true" autocomplete="off">
+                        <small class="error-message" id="studentIdError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="fullName">Full Name <span>*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                               data-label="Full Name" data-required="true" autocomplete="name">
+                        <small class="error-message" id="fullNameError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email Address <span>*</span></label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com"
+                               data-label="Email Address" data-required="true" autocomplete="email">
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone Number <span>*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="09XXXXXXXXX"
+                               data-label="Phone Number" data-format="11-digit Philippine mobile number"
+                               autocomplete="tel">
+                        <small class="hint">Format: 11 digits starting with 09.</small>
+                        <small class="error-message" id="phoneError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="dob">Date of Birth <span>*</span></label>
+                        <input type="date" id="dob" name="dob" data-label="Date of Birth">
+                        <small class="error-message" id="dobError"></small>
+                    </div>
+
+                    <fieldset class="field gender-field">
+                        <legend>Gender <span>*</span></legend>
+                        <div class="radio-row">
+                            <label class="radio-option"><input type="radio" name="gender" value="Female"> Female</label>
+                            <label class="radio-option"><input type="radio" name="gender" value="Male"> Male</label>
+                            <label class="radio-option"><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+                        </div>
+                        <small class="error-message" id="genderError"></small>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="program">Program <span>*</span></label>
+                        <select id="program" name="program" data-label="Program">
+                            <option value="">Select your program</option>
+                            <option value="BSIT">Bachelor of Science in Information Technology</option>
+                            <option value="BSCS">Bachelor of Science in Computer Science</option>
+                            <option value="BSIS">Bachelor of Science in Information Systems</option>
+                            <option value="BSECE">Bachelor of Science in Electronics Engineering</option>
+                            <option value="BSCJ">Bachelor of Science in Criminal Justice</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <small class="error-message" id="programError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="yearLevel">Year Level <span>*</span></label>
+                        <select id="yearLevel" name="yearLevel" data-label="Year Level">
+                            <option value="">Select year level</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="5th Year">5th Year</option>
+                        </select>
+                        <small class="error-message" id="yearLevelError"></small>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Account Information</h2>
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="password">Password <span>*</span></label>
+                        <input type="password" id="password" name="password" placeholder="At least 8 characters"
+                               data-label="Password" autocomplete="new-password">
+                        <small class="hint">Use at least 8 characters.</small>
+                        <small class="error-message" id="passwordError"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password <span>*</span></label>
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                               placeholder="Enter the same password" data-label="Confirm Password"
+                               autocomplete="new-password">
+                        <small class="error-message" id="confirmPasswordError"></small>
+                    </div>
+
+                    <div class="field full-width">
+                        <button type="button" id="togglePassword" class="text-button"
+                                aria-pressed="false" data-state="hidden">Show passwords</button>
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="address">Address <span>*</span></label>
+                        <textarea id="address" name="address" rows="3"
+                                  placeholder="House number, street, barangay, city/municipality"
+                                  data-label="Address" autocomplete="street-address"></textarea>
+                        <small class="error-message" id="addressError"></small>
+                    </div>
+                </div>
+
+                <div class="agreement-block">
+                    <label class="agreement-label" for="agreement">
+                        <input type="checkbox" id="agreement" name="agreement">
+                        <span>I confirm that the information I provided is accurate. <span>*</span></span>
+                    </label>
+                    <small class="error-message" id="agreementError"></small>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" class="btn btn-primary" id="submitButton">Submit Registration</button>
+                    <button type="reset" class="btn btn-secondary" id="resetButton">Reset Form</button>
+                </div>
+                <p class="required-note">Fields marked with * are required.</p>
+            </form>
+        </section>
+        <footer>Student Registration Form · WS 301 Performance Task</footer>
+    </main>
+</body>
+</html>
